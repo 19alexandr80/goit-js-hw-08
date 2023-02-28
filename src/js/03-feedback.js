@@ -12,8 +12,6 @@ function formDa(e) {
   const email = e.currentTarget.elements.email.value;
   localStorage.setItem('message', message);
   localStorage.setItem('email', email);
-  console.log(message);
-  console.log(email);
 }
 formElem.addEventListener('input', throttieOnformDa);
 formElem.addEventListener('submit', onSubmit);
