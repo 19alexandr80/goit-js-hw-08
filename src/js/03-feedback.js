@@ -1,11 +1,11 @@
 const throttle = require('lodash.throttle');
 const formElem = document.querySelector('.feedback-form');
-if (localStorage.getItem('message')) {
-  formElem.elements.message.value = localStorage.getItem('message');
-}
-if (localStorage.getItem('email')) {
-  formElem.elements.email.value = localStorage.getItem('email');
-}
+const formData = new FormData(formElem);
+formData.forEach((a, b) => {
+  if (localStorage.getItem(b)) {
+    formElem.elements[b].value = localStorage.getItem(b);
+  }
+});
 function onFormSaveLocal(e) {
   localStorage.setItem(e.target.name, e.target.value);
 }
