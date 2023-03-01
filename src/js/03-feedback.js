@@ -6,25 +6,19 @@ if (localStorage.getItem('message')) {
 if (localStorage.getItem('email')) {
   formElem.elements.email.value = localStorage.getItem('email');
 }
-const throttieOnformDa = throttle(formDa, 500);
-function formDa(e) {
-  const message = e.currentTarget.elements.message.value;
-  const email = e.currentTarget.elements.email.value;
-  localStorage.setItem('message', message);
-  localStorage.setItem('email', email);
+function onFormSaveLocal(e) {
+  localStorage.setItem(e.target.name, e.target.value);
 }
-formElem.addEventListener('input', throttieOnformDa);
+formElem.addEventListener('input', throttle(onFormSaveLocal, 500));
 formElem.addEventListener('submit', onSubmit);
 function onSubmit(e) {
   e.preventDefault();
-  localStorage.removeItem('message');
-  localStorage.removeItem('email');
-  const consoleLog = {};
+  const setConsoleLog = {};
   const formData = new FormData(e.currentTarget);
   formData.forEach((a, b) => {
-    consoleLog[b] = a;
+    localStorage.removeItem(b);
+    setConsoleLog[b] = a;
   });
-  console.log(consoleLog);
-  formElem.elements.email.value = '';
-  formElem.elements.message.value = '';
+  console.log(setConsoleLog);
+  e.currentTarget.reset();
 }
