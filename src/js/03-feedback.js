@@ -1,4 +1,3 @@
-const { forEach } = require('lodash');
 const throttle = require('lodash.throttle');
 const formElem = document.querySelector('.feedback-form');
 if (localStorage.getItem('feedback-form-state')) {
