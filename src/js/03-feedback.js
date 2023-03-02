@@ -20,8 +20,8 @@ function onSubmit(e) {
   formData.forEach((a, b) => {
     setConsoleLog[b] = a;
   });
-  localStorage.removeItem('feedback-form-state');
   console.log(setConsoleLog);
+  localStorage.removeItem('feedback-form-state');
   e.currentTarget.reset();
   for (const key in objFormLocal) {
     delete objFormLocal[key];
